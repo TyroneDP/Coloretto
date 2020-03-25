@@ -30,28 +30,30 @@ public class ColorettoApplicatie
 
 		do
 		{	
-			
-			
+
+
 			eindeRonde();
-			
+
 			controleerVol();
-			
+
 			rijKeuze();
-			
+
 			//bepaalLaatsteSpeler();		//dit uit commentaar halen om bug te maken van laatsteSpeler dat begint in nieuwe ronde
-			
+
+			kaartenOpRijen();
+
 			laatsteRonde();					//hierin zit berekenScore & geefWinnaar
 			if(spel.isSpelBezig() == true) 
 			{
 				volgendeSpeler();
 			}
-			
-			
+
+
 		}while(spel.isSpelBezig() == true);
-		
-		
-		
-		
+
+
+
+
 	}
 	public void startSpel()
 	{
@@ -77,7 +79,7 @@ public class ColorettoApplicatie
 
 
 		//bepaalSpelerNamen
-		
+
 		List<String> namen = new ArrayList<String>();
 
 		int teller = 1;
@@ -91,7 +93,7 @@ public class ColorettoApplicatie
 			namen.add(naam);
 
 			spel.getSpelers().add(new Speler(naam));
-			
+
 			spel.getSpelersInRonde().add(new Speler(naam));
 
 
@@ -100,7 +102,7 @@ public class ColorettoApplicatie
 
 		//VulStartKleuren
 		spel.vulStartKleuren();
-		
+
 		//bepaalStartKaart
 		//Startkaart bepalen
 		spel.bepaalStartKaart();
@@ -110,7 +112,7 @@ public class ColorettoApplicatie
 		System.out.println("-----BEGIN RONDE 1-----");							
 
 
-		
+
 	}
 	public void maakStapel()
 
@@ -150,19 +152,24 @@ public class ColorettoApplicatie
 				{
 					System.out.println("Op welke rijkaart wilt u de kaart leggen? : ");
 
-						for(int i = 0 ; i <= spel.getSpelers().size()-1 ; i++)
-						{
-							System.out.printf(" %d: %s %d %n", i+1 , spel.getRijen().get(i).getNaam(), spel.getRijen().get(i).getRijNummer());
-						}
+					/*for(int i = 0 ; i <= spel.getSpelers().size()-1 ; i++)
+					{
+						System.out.printf(" %d: %s %d: %n", i+1 , spel.getRijen().get(i).getNaam(), spel.getRijen().get(i).getRijNummer()  );
+						spel.kaartenOpRijen();
 
-						rijKeuze = invoer.nextInt();
-						
-						spel.setFouteKeuze(false);
-
-						//LegOpRij  					uit Spel
-						spel.legOpRij(rijKeuze);
+					}
+					 */
 					
-						
+					spel.keuzeRij();
+
+					rijKeuze = invoer.nextInt();
+
+					spel.setFouteKeuze(false);
+
+					//LegOpRij  					uit Spel
+					spel.legOpRij(rijKeuze);
+
+
 
 				}while(rijKeuze < 1 || rijKeuze > spel.getSpelers().size());
 
@@ -183,7 +190,7 @@ public class ColorettoApplicatie
 					trekKeuze = invoer.nextInt();
 
 					spel.setFouteKeuze(false);
-					
+
 					//trekRij
 					spel.trekRij(trekKeuze);
 
@@ -206,39 +213,39 @@ public class ColorettoApplicatie
 		spel.bepaalVolgendeSpeler();
 		System.out.printf("De volgende speler is : %s%n",spel.getHuidigeSpeler());
 	}
-	
+
 	public void controleerVol() 
 	{
 		spel.controleerVol();
 	}
-	
+
 	public void eindeRonde()
 	{
 		spel.eindeRonde();
 	}
-	
+
 	public void laatsteRonde()
 	{
 		spel.laatsteRonde();
 	}
-	
 
-	
+
+
 	public void bepaalLaatsteSpeler()
 	{
 		//spel.bepaalLaatsteSpeler();											//dit uit commentaar halen om bug te maken van laatsteSpeler dat begint in nieuwe ronde
 	}
-	
+
 
 	/*
 	public void toonInfo() 
 	{
 		//toonAantalSpeler
 		spel.toonAantalSpelers();
-		
+
 		//toonAantalSpelersInRonde
 		spel.toonAantalSpelersInRonde();
-		
+
 		//toonKaartenOpRij1
 		spel.toonKaartenOpRij1();
 		spel.toonKaartenOpRij2();
@@ -253,6 +260,11 @@ public class ColorettoApplicatie
 		spel.getStapel().toonAantalKaarten();									//methode uit klasse Stapel voor te checken hoeveel kaarten er wel inzitten
 
 	}
-	*/
+	 */
+	public void kaartenOpRijen()
+	{
+
+	}
+
 
 }

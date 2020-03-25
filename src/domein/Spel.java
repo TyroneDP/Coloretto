@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Random;
 
 
+
+
 public class Spel
 {
 
@@ -34,22 +36,17 @@ public class Spel
 	private int score = 0;
 
 	private boolean fouteKeuze = false;
-	
-	
-	
+
 	//methodes
 
 	//constructor
-
-	
-
 	public Spel()
 	{
 
 	}
 
 	//getters & setters
-	
+
 	public boolean isFouteKeuze() 
 	{
 		return fouteKeuze;
@@ -239,7 +236,7 @@ public class Spel
 					} else 
 					{
 						System.out.println("Rij 1 is al genomen gelieve een andere te kiezen! ");
-						
+
 						setFouteKeuze(true);
 					}
 				}
@@ -247,7 +244,7 @@ public class Spel
 				else 
 				{
 					System.out.println("Rij 1 is vol gelieve een andere te kiezen! ");
-					
+
 					setFouteKeuze(true);
 				}
 
@@ -771,7 +768,7 @@ public class Spel
 
 	public void bepaalVolgendeSpeler()
 	{
-				
+
 		if (spelersInRonde.size() == 0) 
 		{
 			eindeRonde();
@@ -817,15 +814,14 @@ public class Spel
 				rij.setVol3(false);
 				rij.setVol4(false);
 				rij.setVol5(false);
-
-
 			}
 
 		}
 
 	}
 
-	/*public Speler bepaalLaatsteSpeler()
+	/*
+	public Speler bepaalLaatsteSpeler()
 	{
 		Speler laatsteSpeler = null;
 		if(spelersInRonde.size() == 1)
@@ -838,6 +834,27 @@ public class Spel
 		return laatsteSpeler;
 	}
 	 */
+	
+	public void keuzeRij()
+	{
+		for (Rij rij : getRijen() ) 
+		{
+			System.out.printf(" %d: %s %d: %n", rij.getRijNummer(), rij.getNaam(), rij.getRijNummer()  );
+			
+		}
+		kaartenOpRijen();
+	}
+
+	public void kaartenOpRijen()
+	{
+		for (Kaart kaart : rij.getDeKaartenVanDeRij1())
+		{
+			System.out.printf("%s," , kaart.getKleur());
+			
+		}
+		System.out.println();
+	}
+	
 
 	public void controleerVol()
 	{
