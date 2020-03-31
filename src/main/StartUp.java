@@ -1,6 +1,7 @@
 package main;
 
 
+
 import gui.ColorettoApplicatie;
 import javafx.application.Application;
 import javafx.scene.Scene;
