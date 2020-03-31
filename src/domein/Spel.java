@@ -27,34 +27,25 @@ public class Spel
 
 	private Speler huidigeSpeler;
 
-	private Rij gekozenRij = new Rij();
-
 	private Stapel stapel = new Stapel();
 
 	private List<Kaart> startkleuren = new ArrayList<Kaart>();
+
+	private Rij rij = new Rij();
 
 	private int score = 0;
 
 	private boolean fouteKeuze = false;
 
-	private Kaart kaart;
-
-
-
-
 	//methodes
 
 	//constructor
-
-
 	public Spel()
 	{
 
 	}
 
 	//getters & setters
-
-
 
 	public boolean isFouteKeuze() 
 	{
@@ -222,71 +213,492 @@ public class Spel
 	}
 
 	public void legOpRij(int rijKeuze)
+
 	{
 		int laatsteKaart;
 
-		gekozenRij = rijen.get(rijKeuze - 1);
+		if (getSpelers().size()== 4) 
+		{	
 
-		if(gekozenRij.isVol() == false)
-		{
-			if (gekozenRij.isGenomen() == false) 
+			if (rijKeuze == 1) 
 			{
+				if(rij.isVol1() == false)
+				{
+					if (rij.isGenomen1() == false) 
+					{
+						laatsteKaart = stapel.getKaarten().size()-1;
 
-				laatsteKaart = stapel.getKaarten().size()-1;
+						Kaart kaart = stapel.getKaarten().get(laatsteKaart);
 
-				Kaart kaart = stapel.getKaarten().get(laatsteKaart);
+						rij.getDeKaartenVanDeRij1().add(kaart);
 
-				gekozenRij.getDeKaartenVanDeRij().add(kaart);
+						stapel.getKaarten().remove(kaart);
+					} else 
+					{
+						System.out.println("Rij 1 is al genomen gelieve een andere te kiezen! ");
 
-				stapel.getKaarten().remove(kaart);
+						setFouteKeuze(true);
+					}
+				}
 
-				gekozenRij.setLeeg(false);
+				else 
+				{
+					System.out.println("Rij 1 is vol gelieve een andere te kiezen! ");
 
-			} else 
-			{
-				System.out.println("Deze Rij is al genomen gelieve een andere te kiezen! ");
+					setFouteKeuze(true);
+				}
+
 			}
-		}
+			else if(rijKeuze == 2)
+			{
+				if(rij.isVol2() == false)
+				{
+					if (rij.isGenomen2() == false) 
+					{
+						laatsteKaart = stapel.getKaarten().size()-1;
 
-		else 
+						Kaart kaart = stapel.getKaarten().get(laatsteKaart);
+
+						rij.getDeKaartenVanDeRij2().add(kaart);
+
+						stapel.getKaarten().remove(kaart);
+					} else 
+					{
+						System.out.println("Rij 2 is al genomen gelieve een andere te kiezen! ");
+						setFouteKeuze(true);
+					}
+				}
+
+				else 
+				{
+					System.out.println("Rij 2 is vol gelieve een andere te kiezen! ");
+					setFouteKeuze(true);
+				}
+
+
+
+			}
+			else if(rijKeuze == 3)
+			{
+				if(rij.isVol3() == false)
+				{
+					if (rij.isGenomen3() == false) 
+					{
+						laatsteKaart = stapel.getKaarten().size()-1;
+
+						Kaart kaart = stapel.getKaarten().get(laatsteKaart);
+
+						rij.getDeKaartenVanDeRij3().add(kaart);
+
+						stapel.getKaarten().remove(kaart);
+					} else 
+					{
+						System.out.println("Rij 3 is al genomen gelieve een andere te kiezen! ");
+						setFouteKeuze(true);
+					}
+				}
+
+				else 
+				{
+					System.out.println("Rij 3 is vol gelieve een andere te kiezen! ");
+					setFouteKeuze(true);
+				}
+
+
+			}
+			else if(rijKeuze == 4)
+			{
+				if(rij.isVol4() == false)
+				{
+					if (rij.isGenomen4() == false) 
+					{
+						laatsteKaart = stapel.getKaarten().size()-1;
+
+						Kaart kaart = stapel.getKaarten().get(laatsteKaart);
+
+						rij.getDeKaartenVanDeRij4().add(kaart);
+
+						stapel.getKaarten().remove(kaart);
+					} else 
+					{
+						System.out.println("Rij 4 is al genomen gelieve een andere te kiezen! ");
+						setFouteKeuze(true);
+					}
+				}
+
+				else 
+				{
+					System.out.println("Rij 4 is vol gelieve een andere te kiezen! ");
+					setFouteKeuze(true);
+				}
+
+
+
+			}
+			else 
+			{
+				System.out.println("Foute invoer, keuze moet tussen 1 en 4 liggen!");
+			}
+		} 
+		else //spelers == 5
 		{
-			System.out.println("Deze Rij is vol gelieve een andere te kiezen! ");
+			if (rijKeuze == 1) 
+			{
+				if(rij.isVol1() == false)
+				{
+					if (rij.isGenomen1() == false) 
+					{
+						laatsteKaart = stapel.getKaarten().size()-1;
+
+						Kaart kaart = stapel.getKaarten().get(laatsteKaart);
+
+						rij.getDeKaartenVanDeRij1().add(kaart);
+
+						stapel.getKaarten().remove(kaart);
+					} else 
+					{
+						System.out.println("Rij 1 is al genomen gelieve een andere te kiezen! ");
+						setFouteKeuze(true);
+					}
+				}
+
+				else 
+				{
+					System.out.println("Rij 1 is vol gelieve een andere te kiezen! ");
+					setFouteKeuze(true);
+				}
+
+
+			}
+			else if(rijKeuze == 2)
+			{
+				if(rij.isVol2() == false)
+				{
+					if (rij.isGenomen2() == false) 
+					{
+						laatsteKaart = stapel.getKaarten().size()-1;
+
+						Kaart kaart = stapel.getKaarten().get(laatsteKaart);
+
+						rij.getDeKaartenVanDeRij2().add(kaart);
+
+						stapel.getKaarten().remove(kaart);
+					} else 
+					{
+						System.out.println("Rij 2 is al genomen gelieve een andere te kiezen! ");
+						setFouteKeuze(true);
+					}
+				}
+
+				else 
+				{
+					System.out.println("Rij 2 is vol gelieve een andere te kiezen! ");
+					setFouteKeuze(true);
+				}
+
+			}
+			else if(rijKeuze == 3)
+			{
+				if(rij.isVol3() == false)
+				{
+					if (rij.isGenomen3() == false) 
+					{
+						laatsteKaart = stapel.getKaarten().size()-1;
+
+						Kaart kaart = stapel.getKaarten().get(laatsteKaart);
+
+						rij.getDeKaartenVanDeRij3().add(kaart);
+
+						stapel.getKaarten().remove(kaart);
+					} else 
+					{
+						System.out.println("Rij 3 is al genomen gelieve een andere te kiezen! ");
+						setFouteKeuze(true);
+					}
+				}
+
+				else 
+				{
+					System.out.println("Rij 3 is vol gelieve een andere te kiezen! ");
+					setFouteKeuze(true);
+				}
+
+			}
+			else if(rijKeuze == 4)
+			{
+				if(rij.isVol4() == false)
+				{
+					if (rij.isGenomen4() == false) 
+					{
+						laatsteKaart = stapel.getKaarten().size()-1;
+
+						Kaart kaart = stapel.getKaarten().get(laatsteKaart);
+
+						rij.getDeKaartenVanDeRij4().add(kaart);
+
+						stapel.getKaarten().remove(kaart);
+					} else 
+					{
+						System.out.println("Rij 4 is al genomen gelieve een andere te kiezen! ");
+						setFouteKeuze(true);
+					}
+				}
+
+				else 
+				{
+					System.out.println("Rij 4 is vol gelieve een andere te kiezen! ");
+					setFouteKeuze(true);
+				}
+
+			}else if(rijKeuze == 5)
+			{
+				if(rij.isVol5() == false)
+				{
+					if (rij.isGenomen5() == false) 
+					{
+						laatsteKaart = stapel.getKaarten().size()-1;
+
+						Kaart kaart = stapel.getKaarten().get(laatsteKaart);
+
+						rij.getDeKaartenVanDeRij5().add(kaart);
+
+						stapel.getKaarten().remove(kaart);
+					} else 
+					{
+						System.out.println("Rij 5 is al genomen gelieve een andere te kiezen! ");
+						setFouteKeuze(true);
+					}
+				}
+
+				else 
+				{
+					System.out.println("Rij 5 is vol gelieve een andere te kiezen! ");
+					setFouteKeuze(true);
+				}
+
+
+			}
+			else 
+			{
+				System.out.println("Foute invoer, keuze moet tussen 1 en 5 liggen!");
+				setFouteKeuze(true);
+			}
+
 		}
 	}
-
-
 
 	public void trekRij(int trekKeuze)
 	{
-		gekozenRij = rijen.get(trekKeuze - 1);
 
-		if(gekozenRij.isGenomen() == false && gekozenRij.isLeeg() == false)
-		{
+		if (getSpelers().size()== 4) 
+		{	
 
-			for (Kaart kaart : gekozenRij.getDeKaartenVanDeRij()) 
+			if (trekKeuze == 1) 
 			{
-				huidigeSpeler.getHand().add(kaart); //voor elke kaart uit rij 1,voegt hij kaart toe aan hand SPELER1
+				if(rij.isGenomen1() == false)
+				{
+
+					for (Kaart kaart : rij.getDeKaartenVanDeRij1()) 
+					{
+						huidigeSpeler.getHand().add(kaart); //voor elke kaart uit rij 1,voegt hij kaart toe aan hand SPELER1
+
+					}
+					rij.setGenomen1(true);					//zet genomen naar true
+					rij.getDeKaartenVanDeRij1().clear();	//verwijdert kaarten uit rij 1
+					getSpelersInRonde().remove(huidigeSpeler);
+				}
+				else if (rij.isGenomen1() == true)
+				{
+					System.out.println("Rij 1 is al genomen, kies een andere.");
+					setFouteKeuze(true);
+				}
+
 
 			}
-			gekozenRij.setGenomen(true);					//zet genomen naar true
-			gekozenRij.getDeKaartenVanDeRij().clear();		//verwijdert kaarten uit rij 1
-			getSpelersInRonde().remove(huidigeSpeler);
+			else if(trekKeuze == 2)
+			{
+				if(rij.isGenomen2() == false)
+				{
+
+					for (Kaart kaart : rij.getDeKaartenVanDeRij2()) 
+					{
+						huidigeSpeler.getHand().add(kaart); //voor elke kaart uit rij 1,voegt hij kaart toe aan hand SPELER1
+					}
+					rij.setGenomen2(true);		//zet genomen naar true
+					rij.getDeKaartenVanDeRij2().clear();//verwijdert kaarten uit rij 2
+					getSpelersInRonde().remove(huidigeSpeler);
+				}
+				else if (rij.isGenomen2() == true)
+				{
+					System.out.println("Rij 2 is al genomen, kies een andere.");
+					setFouteKeuze(true);
+				}
+
+			}
+			else if(trekKeuze == 3)
+			{
+				if(rij.isGenomen3() == false)
+				{
+
+					for (Kaart kaart : rij.getDeKaartenVanDeRij3()) {
+						huidigeSpeler.getHand().add(kaart); //voor elke kaart uit rij 1,voegt hij kaart toe aan hand SPELER1
+
+					}
+					rij.setGenomen3(true);		//zet genomen naar true
+					rij.getDeKaartenVanDeRij3().clear();//verwijdert kaarten uit rij 2
+					getSpelersInRonde().remove(huidigeSpeler);
+				}
+				else if (rij.isGenomen3() == true)
+				{
+					System.out.println("Rij 3 is al genomen, kies een andere.");
+					setFouteKeuze(true);
+				}
 
 
-		}else if (gekozenRij.isGenomen() == true )
+			}
+			else if(trekKeuze == 4)
+			{
+				if(rij.isGenomen4() == false)
+				{
+
+					for (Kaart kaart : rij.getDeKaartenVanDeRij4()) 
+					{
+						huidigeSpeler.getHand().add(kaart); //voor elke kaart uit rij 1,voegt hij kaart toe aan hand SPELER1
+
+					}
+					rij.setGenomen4(true);		//zet genomen naar true
+					rij.getDeKaartenVanDeRij4().clear();//verwijdert kaarten uit rij 2
+					getSpelersInRonde().remove(huidigeSpeler);
+				}
+				else if (rij.isGenomen4() == true)
+				{
+					System.out.println("Rij 4 is al genomen, kies een andere.");
+					setFouteKeuze(true);
+				}
+
+
+			}
+			else 
+			{
+				System.out.println("Foute invoer, keuze moet tussen 1 en 4 liggen!");
+				setFouteKeuze(true);
+			}
+
+		} 
+		else //spelers == 5
 		{
-			System.out.println("Rij is al genomen, kies een andere.");
-			setFouteKeuze(true);
-		}else if (gekozenRij.isLeeg() == true )
-		{
-			System.out.println("Rij is leeg, kies een andere.");
-			setFouteKeuze(true);
+
+			if (trekKeuze == 1) 
+			{
+				if(rij.isGenomen1() == false)
+				{
+
+					for (Kaart kaart : rij.getDeKaartenVanDeRij1()) 
+					{
+						huidigeSpeler.getHand().add(kaart); //voor elke kaart uit rij 1,voegt hij kaart toe aan hand SPELER1
+
+					}
+					rij.setGenomen1(true);					//zet genomen naar true
+					rij.getDeKaartenVanDeRij1().clear();	//verwijdert kaarten uit rij 1
+					getSpelersInRonde().remove(huidigeSpeler);
+				}
+				else if (rij.isGenomen1() == true)
+				{
+					System.out.println("Rij 1 is al genomen, kies een andere.");
+					setFouteKeuze(true);
+				}
+
+
+			}
+			else if(trekKeuze == 2)
+			{
+				if(rij.isGenomen2() == false)
+				{
+
+					for (Kaart kaart : rij.getDeKaartenVanDeRij2()) {
+						huidigeSpeler.getHand().add(kaart); //voor elke kaart uit rij 1,voegt hij kaart toe aan hand SPELER1
+
+					}
+					rij.setGenomen2(true);		//zet genomen naar true
+					rij.getDeKaartenVanDeRij2().clear();//verwijdert kaarten uit rij 2
+					getSpelersInRonde().remove(huidigeSpeler);
+				}
+				else if (rij.isGenomen2() == true)
+				{
+					System.out.println("Rij 2 is al genomen, kies een andere.");
+					setFouteKeuze(true);
+				}
+
+			}
+			else if(trekKeuze == 3)
+			{
+				if(rij.isGenomen3() == false)
+				{
+
+					for (Kaart kaart : rij.getDeKaartenVanDeRij3()) {
+						huidigeSpeler.getHand().add(kaart); //voor elke kaart uit rij 1,voegt hij kaart toe aan hand SPELER1
+
+					}
+					rij.setGenomen3(true);		//zet genomen naar true
+					rij.getDeKaartenVanDeRij3().clear();//verwijdert kaarten uit rij 2
+					getSpelersInRonde().remove(huidigeSpeler);
+				}
+				else if (rij.isGenomen3() == true)
+				{
+					System.out.println("Rij 3 is al genomen, kies een andere.");
+					setFouteKeuze(true);
+				}
+
+
+			}
+			else if(trekKeuze == 4)
+			{
+				if(rij.isGenomen4() == false)
+				{
+
+					for (Kaart kaart : rij.getDeKaartenVanDeRij4()) {
+						huidigeSpeler.getHand().add(kaart); //voor elke kaart uit rij 1,voegt hij kaart toe aan hand SPELER1
+
+					}
+					rij.setGenomen4(true);		//zet genomen naar true
+					rij.getDeKaartenVanDeRij4().clear();//verwijdert kaarten uit rij 2
+					getSpelersInRonde().remove(huidigeSpeler);
+				}
+				else if (rij.isGenomen4() == true)
+				{
+					System.out.println("Rij 4 is al genomen, kies een andere.");
+					setFouteKeuze(true);
+				}
+
+			}
+
+			else if(trekKeuze == 5)
+			{
+				if(rij.isGenomen5() == false)
+				{
+					for (Kaart kaart : rij.getDeKaartenVanDeRij5()) 
+					{
+						huidigeSpeler.getHand().add(kaart); //voor elke kaart uit rij 1,voegt hij kaart toe aan hand SPELER1
+
+					}
+					rij.setGenomen5(true);		//zet genomen naar true
+					rij.getDeKaartenVanDeRij5().clear();//verwijdert kaarten uit rij 2
+					getSpelersInRonde().remove(huidigeSpeler);
+				}
+				else if (rij.isGenomen5() == true)
+				{
+					System.out.println("Rij 5 is al genomen, kies een andere.");
+					setFouteKeuze(true);
+				}
+
+
+				else 
+				{
+					System.out.println("Foute invoer, keuze moet tussen 1 en 5 liggen!");
+				}
+			}
 		}
-
-
-
 	}
-
 
 	public Speler bepaalStartSpeler()
 	{ 
@@ -373,6 +785,7 @@ public class Spel
 
 
 	public void eindeRonde() 
+
 	{
 		if (spelersInRonde.size() == 0 && isLaatsteRonde() == false) 
 		{
@@ -389,13 +802,18 @@ public class Spel
 
 				//huidigeSpeler = spelersInRonde.get(laatsteSpeler);				om laatstespeler aan zet bij de volgende ronde te laten beginnen
 
-				for (Rij gekozenRij: this.getRijen() ) 
-				{
-					gekozenRij.setGenomen(false);
 
-					gekozenRij.setVol(false);
-				}
+				rij.setGenomen1(false);
+				rij.setGenomen2(false);
+				rij.setGenomen3(false);
+				rij.setGenomen4(false);
+				rij.setGenomen5(false);
 
+				rij.setVol1(false);
+				rij.setVol2(false);
+				rij.setVol3(false);
+				rij.setVol4(false);
+				rij.setVol5(false);
 			}
 
 		}
@@ -416,50 +834,91 @@ public class Spel
 		return laatsteSpeler;
 	}
 	 */
-
-	public String kaartenOpRijen(int rijKeuze)
+	
+	public void keuzeRij()
 	{
-
-		kaart = new Kaart();									//anders nullpointerexception
-
-		gekozenRij = rijen.get(rijKeuze);
-
-		for (Kaart kaart : gekozenRij.getDeKaartenVanDeRij())			
+		for (Rij rij : getRijen() ) 
 		{
-			System.out.printf("%s, " , kaart.getKleur());
+			System.out.printf(" %d: %s %d: %n", rij.getRijNummer(), rij.getNaam(), rij.getRijNummer()  );
+			
 		}
-		
-		return kaart.getKleur();
+		kaartenOpRijen();
 	}
 
+	public void kaartenOpRijen()
+	{
+		for (Kaart kaart : rij.getDeKaartenVanDeRij1())
+		{
+			System.out.printf("%s," , kaart.getKleur());
+			
+		}
+		System.out.println();
+	}
+	
 
 	public void controleerVol()
 	{
-
-		for (Rij gekozenRij: getRijen())
+		if (rij.getDeKaartenVanDeRij1().size() == 3) 
 		{
-			if (gekozenRij.getDeKaartenVanDeRij().size() == 3)
-			{
-				gekozenRij.setVol(true);
-			}
+			rij.setVol1(true);
+		} 
+		if (rij.getDeKaartenVanDeRij2().size() == 3) 
+		{
+			rij.setVol2(true);
+		} 
+		if (rij.getDeKaartenVanDeRij3().size() == 3) 
+		{
+			rij.setVol3(true);
 		}
-
+		if (rij.getDeKaartenVanDeRij4().size() == 3) 
+		{
+			rij.setVol4(true);
+		}
+		if (rij.getDeKaartenVanDeRij5().size() == 3) 
+		{
+			rij.setVol5(true);
+		}
 	}
 
-	public void controleerLeeg()
+	/*temporele methodes
+
+	public void toonAantalSpelers()
 	{
-
-		for (Rij gekozenRij: getRijen())
-		{
-			if (gekozenRij.getDeKaartenVanDeRij().size() != 0)
-			{
-				gekozenRij.setLeeg(false);
-			}
-			else 
-			{
-				gekozenRij.setLeeg(true);
-			}
-		}
-
+		System.out.printf("%s%s%n", "aantal spelers: ", spelers.size());
 	}
+
+	public void toonAantalSpelersInRonde()
+	{
+		System.out.printf("%s%s%n", "aantal spelers in ronde: ", spelersInRonde.size());
+	}
+
+	public void toonAantalRijen()
+	{
+		System.out.printf("%s%s%n", "aantal rijen:", rijen.size());
+	}
+
+	public void toonKaartenOpRij1()
+	{
+		System.out.printf("het aantal kaarten op rij 1: %s%n", rij.getDeKaartenVanDeRij1().size());
+	}
+	public void toonKaartenOpRij2()
+	{
+		System.out.printf("het aantal kaarten op rij 2: %s%n", rij.getDeKaartenVanDeRij2().size());
+	}
+	public void toonKaartenOpRij3()
+	{
+		System.out.printf("het aantal kaarten op rij 3: %s%n", rij.getDeKaartenVanDeRij3().size());
+	}
+	public void toonKaartenOpRij4()
+	{
+		System.out.printf("het aantal kaarten op rij 4: %s%n", rij.getDeKaartenVanDeRij4().size());
+	}
+	public void toonKaartenOpRij5()
+	{
+		System.out.printf("het aantal kaarten op rij 5: %s%n", rij.getDeKaartenVanDeRij5().size());
+	}
+
+
+	 */
+
 }

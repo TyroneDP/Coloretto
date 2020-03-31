@@ -1,7 +1,7 @@
 package main;
 
 
-import gui.ColorettoApplicatie;
+import ui.ColorettoApplicatie;
 
 public class StartUp 
 {

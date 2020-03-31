@@ -11,15 +11,12 @@ public class Kaart
 
 	//constructor
 	
-	public Kaart()				//Defaultconstructor
-	{
-		
-	}
-	
+
 	public Kaart(String kleur) 
 	{
 		setKleur(kleur);
 	}
+
 
 	//getters & setters
 	

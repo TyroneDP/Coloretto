@@ -17,13 +17,11 @@ public class Rij
 	
 	private boolean genomen;
 	
-	private List<Kaart> deKaartenVanDeRij = new ArrayList<Kaart>();	
+	private List<Kaart> deKaartenVanDeRij = new ArrayList<Kaart>();		
 	
-	private boolean leeg;
+
 
 	//methodes
-
-	
 
 	//constructor
 	public Rij()
@@ -39,21 +37,7 @@ public class Rij
 	}
 	
 	//getters & setters
-	
-	public boolean isLeeg() 
-	{
-		return leeg;
-	}
 
-	public void setLeeg(boolean leeg) 
-	{
-		this.leeg = leeg;
-	}
-	
-	public List<Kaart> getDeKaartenVanDeRij() 
-	{
-		return deKaartenVanDeRij;
-	}
 	
 	
 	public String getNaam() 
@@ -81,10 +65,16 @@ public class Rij
 		this.genomen = genomen;
 	}
 
+	public List<Kaart> getDeKaartenVanDeRij() 
+	{
+		return deKaartenVanDeRij;
+	}
+
 	public void setNaam(String naam) 
 	{
 		this.naam = naam;
 	}
+
 
 	public int getRijNummer() 
 	{
@@ -106,4 +96,13 @@ public class Rij
 		this.aantalKaarten = aantalKaarten;
 	}
 
+	/*andere methodes
+
+	public void toonKaartenOpRij1()
+	{
+		System.out.printf("het aantal kaarten op rij 1: %s%n", getDeKaartenVanDeRij1().size());
+	}
+	
+	
+	*/
 }
