@@ -7,6 +7,4 @@ module Coloretto
 	requires javafx.base;
 	requires javafx.controls;
 	requires javafx.graphics;
-	
-	opens gui to javafx.graphics;
 }
