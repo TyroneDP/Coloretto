@@ -132,28 +132,31 @@ public class Spel
 			startkleuren.add(new Kaart("Blauw"));
 			startkleuren.add(new Kaart("Bruin"));						//Groen & roos weggenomen voor makkelijker te maken.											
 			startkleuren.add(new Kaart("Geel"));
-			startkleuren.add(new Kaart("Grijs"));
+			startkleuren.add(new Kaart("Paars"));
 
 		} else //aantalSpelers == 4 
 		{
 			startkleuren.add(new Kaart("Oranje"));
 			startkleuren.add(new Kaart("Blauw"));
-			startkleuren.add(new Kaart("Bruin"));						//Groen, roos & grijs weggenomen voor makkelijker te maken.												
+			startkleuren.add(new Kaart("Bruin"));						//Groen, roos & rood weggenomen voor makkelijker te maken.												
 			startkleuren.add(new Kaart("Geel"));
 		}
 	}
 
-	public void bepaalStartKaart()
+	public Kaart bepaalStartKaart()
 	{
 		Random random = new Random();
+		Kaart kleur = new Kaart();
 		for(int i = 0; i < getSpelers().size() ; i++)
 		{
 			int startkaart = random.nextInt(startkleuren.size());									//domeinlaag zetten 
-			Kaart kleur = startkleuren.get(startkaart);
+			kleur = startkleuren.get(startkaart);
 			System.out.printf("%s kreeg de startkaart: %s%n", getSpelers().get(i), kleur);	
 			getSpelers().get(i).getHand().add(kleur);
 			startkleuren.remove(kleur);
 		}
+		
+		return kleur;
 	}
 
 	public void maakStapel()
@@ -166,13 +169,12 @@ public class Spel
 				stapel.getKaarten().add(new Kaart("Blauw"));
 				stapel.getKaarten().add(new Kaart("Bruin"));																
 				stapel.getKaarten().add(new Kaart("Geel"));
-				stapel.getKaarten().add(new Kaart("Grijs"));	
+				stapel.getKaarten().add(new Kaart("Paars"));	
 			}
 
-			for(int i = 0; i < 9 ;i++)							    //omdat Groen & Roos uit startkleuren weg zijn
-			{
+			for(int i = 0; i < 9 ;i++)							    			{
 				stapel.getKaarten().add(new Kaart("Groen"));
-				stapel.getKaarten().add(new Kaart("Roos"));
+				stapel.getKaarten().add(new Kaart("Rood"));
 
 			}
 
@@ -199,11 +201,11 @@ public class Spel
 
 			}
 
-			for(int i = 0; i < 9 ;i++)							    //omdat Groen & Roos uit startkleuren weg zijn
+			for(int i = 0; i < 9 ;i++)							   
 			{
-				stapel.getKaarten().add(new Kaart("Grijs"));	
+				stapel.getKaarten().add(new Kaart("Paars"));	
 				stapel.getKaarten().add(new Kaart("Groen"));
-				stapel.getKaarten().add(new Kaart("Roos"));
+				stapel.getKaarten().add(new Kaart("Rood"));
 
 			}
 
@@ -256,7 +258,7 @@ public class Spel
 
 
 
-	public void trekRij(int trekKeuze)
+	public Rij trekRij(int trekKeuze)
 	{
 		gekozenRij = rijen.get(trekKeuze - 1);
 
@@ -283,7 +285,7 @@ public class Spel
 			setFouteKeuze(true);
 		}
 
-
+		return gekozenRij;
 
 	}
 

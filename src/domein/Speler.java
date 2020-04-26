@@ -39,13 +39,13 @@ public class Speler
 
 		int score = 0;
 
-		int 	Blauw = 0,  
+		int 	Oranje = 0,  
+				Blauw = 0, 
 				Bruin = 0, 
-				Grijs = 0, 
-				Groen  = 0, 
-				Oranje = 0,
-				Roze = 0, 
-				Geel = 0, 
+				Geel  = 0, 
+				Paars = 0,
+				Groen = 0, 
+				Rood = 0, 
 				Plus2 = 0, 
 				Joker = 0;
 		
@@ -54,10 +54,10 @@ public class Speler
 
 			if 		   (k.getKleur() == "Blauw") Blauw++;
 			else 	if (k.getKleur() == "Bruin") Bruin++;
-			else	if (k.getKleur() == "Grijs") Grijs++;
+			else	if (k.getKleur() == "Rood") Rood++;
 			else	if (k.getKleur() == "Groen") Groen++;
 			else	if (k.getKleur() == "Oranje") Oranje++;
-			else	if (k.getKleur() == "Roze") Roze++;
+			else	if (k.getKleur() == "Paars") Paars++;
 			else	if (k.getKleur() == "Geel") Geel++;
 			else	if (k.getKleur() == "Plus2") Plus2++;
 			else	if (k.getKleur() == "Joker") Joker++;
@@ -66,10 +66,10 @@ public class Speler
 
 		aantal.add(Blauw);
 		aantal.add(Bruin);
-		aantal.add(Grijs);
+		aantal.add(Rood);
 		aantal.add(Groen);
 		aantal.add(Oranje);
-		aantal.add(Roze);
+		aantal.add(Paars);
 		aantal.add(Geel);
 
 		Collections.sort(aantal, Collections.reverseOrder());
