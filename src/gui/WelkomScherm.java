@@ -1,6 +1,7 @@
 package gui;
 
 import java.util.Optional;
+
 import domein.Spel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,7 +12,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -21,12 +21,11 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import ui.ColorettoApplicatie;
 
 public class WelkomScherm extends BorderPane
 {
 	private Spel spel;
-	private AantalSpelersScherm aantalspelersscherm;
+	private AantalEnNamen aantalennamen;
 	private Label titel = new Label("Welkom bij onze Coloretto!");
 	private Background achtergrond;
 	private Button starten, sluiten, hervatten;
@@ -111,17 +110,16 @@ public class WelkomScherm extends BorderPane
 		});
 
 		//als ik op starten druk
-		starten.setOnAction(this::toonAantalSpelersScherm);
+		starten.setOnAction(this::toonAantalEnNamen);
 
 	}
 
-	private void toonAantalSpelersScherm(ActionEvent event)
+	private void toonAantalEnNamen(ActionEvent event)
 	{	
 		//nieuwe class loaden als ik klik
-		aantalspelersscherm = new AantalSpelersScherm(spel);
-		getChildren().remove(titel);
-		setCenter(aantalspelersscherm);
-
+		aantalennamen = new AantalEnNamen();
+		getChildren().removeAll(titel);
+		setCenter(aantalennamen);
 	}
 
 
