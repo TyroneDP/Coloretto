@@ -7,8 +7,8 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import persistentie.BerichtMapper;
-import persistentie.GebruikerMapper;
+import persistentie.SpelMapper;
+import persistentie.SpelerMapper;
 
 public class StartUpGui extends Application
 {
@@ -43,8 +43,8 @@ public class StartUpGui extends Application
 
 	public static void main(String[] args) 
 	{
-		GebruikerMapper gebruikerMapper = new GebruikerMapper();
-        BerichtMapper berichtMapper = new BerichtMapper();
+		SpelerMapper gebruikerMapper = new SpelerMapper();
+		SpelMapper spelMapper = new SpelMapper();
         
         /*
         // We maken opnieuw twee gebruikers aan.

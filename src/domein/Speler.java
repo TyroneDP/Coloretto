@@ -14,7 +14,7 @@ public class Speler
 
 	private List<Kaart> hand = new ArrayList<Kaart>();
 
-
+	int score = 0;
 
 	//methodes
 
@@ -37,7 +37,7 @@ public class Speler
 
 		List<Integer> aantal = new ArrayList<Integer>();
 
-		int score = 0;
+		
 
 		int 	Oranje = 0,  
 				Blauw = 0, 
@@ -121,6 +121,10 @@ public class Speler
 		return score;
 	}	
 
+	public void setScore(int score) 
+	{
+		this.score = score;
+	}
 
 	public List<Kaart> getHand() 
 	{

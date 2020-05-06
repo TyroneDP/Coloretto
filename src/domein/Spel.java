@@ -1,6 +1,7 @@
 package domein;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -39,7 +40,9 @@ public class Spel
 
 	private Kaart kaart;
 
-
+	private int spelID;
+	
+	private Calendar datum;
 
 
 	//methodes
@@ -54,11 +57,40 @@ public class Spel
 
 	//getters & setters
 
+	public java.sql.Date geefDatum() 
+	{
+        datum = Calendar.getInstance();
+        java.sql.Date sqlDate = new java.sql.Date(datum.getTimeInMillis());
+        return sqlDate;
+    }
+	
+	public Calendar getDatum() 
+	{
+		return datum;
+	}
 
+	public void setDatum(Calendar datum) 
+	{
+		this.datum = datum;
+	}
 
+	public int getSpelID() 
+    {
+        return spelID;
+    }
+
+	public void setSpelID(int spelID) 
+    {
+        this.spelID = spelID;
+    }
+	
 	public boolean isFouteKeuze() 
 	{
 		return fouteKeuze;
+	}
+
+	public Kaart getKaart() {
+		return kaart;
 	}
 
 	public void setFouteKeuze(boolean fouteKeuze) 
@@ -122,9 +154,26 @@ public class Spel
 	}
 
 	//andere methodes
+	public Kaart trekVanStapelFx()
+	{
+		Kaart ondersteKaart = stapel.getKaarten().get(0);
+		
+		
+		return ondersteKaart;
+		
+	}
+	public Kaart trekGetrokkenKaartFx()
+	{
+		Kaart getrokkenKaart = stapel.getKaarten().get(0);
+		
+		stapel.getKaarten().remove(0);
+		
+		return getrokkenKaart;
+	}
+	
 	public void vulStartKleuren()
 	{
-		//domeinlaag zetten 
+		
 
 		if(getSpelers().size() == 5) 
 		{
@@ -222,6 +271,7 @@ public class Spel
 
 		Collections.shuffle(stapel.getKaarten());
 	}
+	
 
 	public void legOpRij(int rijKeuze)
 	{
@@ -262,7 +312,7 @@ public class Spel
 	{
 		gekozenRij = rijen.get(trekKeuze - 1);
 
-		if(gekozenRij.isGenomen() == false && gekozenRij.isLeeg() == false)
+		if(!gekozenRij.isGenomen() && !gekozenRij.isLeeg())
 		{
 
 			for (Kaart kaart : gekozenRij.getDeKaartenVanDeRij()) 
@@ -275,11 +325,11 @@ public class Spel
 			getSpelersInRonde().remove(huidigeSpeler);
 
 
-		}else if (gekozenRij.isGenomen() == true )
+		}else if (gekozenRij.isGenomen())
 		{
 			System.out.println("Rij is al genomen, kies een andere.");
 			setFouteKeuze(true);
-		}else if (gekozenRij.isLeeg() == true )
+		}else if (gekozenRij.isLeeg())
 		{
 			System.out.println("Rij is leeg, kies een andere.");
 			setFouteKeuze(true);
@@ -295,9 +345,9 @@ public class Spel
 
 		Random random = new Random();
 
-		int gekozenSpeler = random.nextInt(spelersInRonde.size());			//kan hier fout inzitten?
+		int gekozenSpeler = random.nextInt(spelers.size());			//kan hier fout inzitten?
 
-		Speler startSpeler = spelersInRonde.get(gekozenSpeler);
+		Speler startSpeler = spelers.get(gekozenSpeler);
 
 		huidigeSpeler = startSpeler;
 
