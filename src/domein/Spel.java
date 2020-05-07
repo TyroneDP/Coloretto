@@ -6,6 +6,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import persistentie.SpelMapper;
+import persistentie.SpelerMapper;
+
 
 
 
@@ -44,6 +47,9 @@ public class Spel
 	
 	private Calendar datum;
 
+	private SpelMapper spelMapper;
+	
+	private SpelerMapper spelerMapper;
 
 	//methodes
 
@@ -52,7 +58,8 @@ public class Spel
 
 	public Spel()
 	{
-
+		spelMapper = new SpelMapper();
+		spelerMapper = new SpelerMapper();
 	}
 
 	//getters & setters

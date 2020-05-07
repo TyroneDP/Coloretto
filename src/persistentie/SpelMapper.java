@@ -14,15 +14,15 @@ import domein.Speler;
 
 public class SpelMapper 
 {
-	public boolean voegSpelToe(Spel spel) 
+	public boolean maakNieuwSpel(Spel spel) 
 	{
         List<Speler> spelers = spel.getSpelers();
         try (Connection conn = DriverManager.getConnection(MapperConfig.JDBC_URL)) {
-            PreparedStatement queryNieuwSpel = conn.prepareStatement("INSERT INTO spel(datum) VALUES (?)", Statement.RETURN_GENERATED_KEYS);
-            queryNieuwSpel.setDate(1, spel.geefDatum());
-            queryNieuwSpel.executeUpdate();
+            PreparedStatement queryMaakNieuwSpel = conn.prepareStatement("INSERT INTO spel(datum) VALUES (?)", Statement.RETURN_GENERATED_KEYS);
+            queryMaakNieuwSpel.setDate(1, spel.geefDatum());
+            queryMaakNieuwSpel.executeUpdate();
 
-            try (ResultSet rs = queryNieuwSpel.getGeneratedKeys()) {
+            try (ResultSet rs = queryMaakNieuwSpel.getGeneratedKeys()) {
                 while (rs.next()) {
                     int spelID = rs.getInt(1);
                     spel.setSpelID(spelID);
@@ -30,35 +30,35 @@ public class SpelMapper
             }
 
             return true;
-        } catch (SQLException ex) {
-            for (Throwable t : ex) {
-                t.printStackTrace();
+        } catch (SQLException sql) {
+            for (Throwable tw : sql) {
+                tw.printStackTrace();
             }
             return false;
         }
     }
 	
-	public Spel geefSpel(int spelID) 
+	public Spel geefBestaandSpel(int spelID) 
 	{
         Spel spel = null;
 
         try (Connection conn = DriverManager.getConnection(MapperConfig.JDBC_URL)) {
-            PreparedStatement queryGeefSpel = conn.prepareStatement("SELECT * FROM spel WHERE spelID = ?");
-            queryGeefSpel.setInt(1, spelID);
+            PreparedStatement queryGeefBestaandSpel = conn.prepareStatement("SELECT * FROM spel WHERE spelID = ?");
+            queryGeefBestaandSpel.setInt(1, spelID);
 
-            try (ResultSet rs = queryGeefSpel.executeQuery()) {
-                if (rs.next()) { // Als er een resultaat gevonden is.
+            try (ResultSet rs = queryGeefBestaandSpel.executeQuery()) {
+                if (rs.next()) { 
                     spel = new Spel();
                     spel.setSpelID(spelID);
-                    Calendar cal = Calendar.getInstance();
+                    Calendar c = Calendar.getInstance();
                     java.util.Date datum = rs.getDate(2);
-                    cal.setTime(datum);
-                    spel.setDatum(cal);
+                    c.setTime(datum);
+                    spel.setDatum(c);
                 }
             }
-        } catch (SQLException ex) {
-            for (Throwable t : ex) {
-                t.printStackTrace();
+        } catch (SQLException sql) {
+            for (Throwable tw : sql) {
+                tw.printStackTrace();
             }
         }
 
