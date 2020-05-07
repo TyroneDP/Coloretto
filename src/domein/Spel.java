@@ -62,6 +62,18 @@ public class Spel
 		spelerMapper = new SpelerMapper();
 	}
 
+	public Spel(List<Speler> spelers) 
+	{
+        this(spelers, Calendar.getInstance());
+    }
+	
+	public Spel(List<Speler> spelers, Calendar datum)
+	{        
+        spelerMapper = new SpelerMapper();
+        spelMapper = new SpelMapper();
+        
+        this.datum = datum;
+    }
 	//getters & setters
 
 	public java.sql.Date geefDatum() 
@@ -521,4 +533,38 @@ public class Spel
 		}
 
 	}
+	
+	
+    public boolean maakNieuweSpeler(Speler speler)
+    {
+        return spelerMapper.maakNieuweSpeler(speler);
+    }
+    
+    public Speler zoekSpeler(String gebruikersnaam)
+    {
+        return spelerMapper.zoekSpeler(gebruikersnaam);
+    }
+    
+    public List<Speler> zoekAlleSpelers()
+    {
+    	return spelerMapper.zoekAlleSpelers();
+    }
+    
+    public List<Speler> geefHighscores()
+    {
+    	return spelerMapper.geefHighscores();
+    }
+    
+    
+    public boolean maakNieuwSpel(Spel spel)
+    {
+    	return spelMapper.maakNieuwSpel(spel);
+    }
+    
+    public Spel geefBestaandSpel(int spelID)
+    {
+    	return spelMapper.geefBestaandSpel(spelID);
+    }
+    
+    
 }

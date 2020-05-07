@@ -20,6 +20,8 @@ public class Rij
 	private List<Kaart> deKaartenVanDeRij = new ArrayList<Kaart>();	
 	
 	private boolean leeg;
+	
+	private static final int MAX_SIZE = 3;
 
 	//methodes
 
@@ -63,6 +65,7 @@ public class Rij
 
 	public boolean isVol() 
 	{
+		
 		return vol;
 	}
 

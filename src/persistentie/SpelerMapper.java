@@ -36,7 +36,8 @@ public class SpelerMapper
 			PreparedStatement queryZoekSpeler = conn.prepareStatement("SELECT * FROM speler WHERE naam = ?");
 			queryZoekSpeler.setString(1, naam);
 			try (ResultSet rs = queryZoekSpeler.executeQuery()) {
-				if (rs.next()) {
+				if (rs.next()) 
+				{
 					speler = new Speler();
 					speler.setNaam(naam);
 				}
@@ -73,7 +74,8 @@ public class SpelerMapper
 		return spelers;
 	}
 
-	public List<Speler> geefHighscores(){
+	public List<Speler> geefHighscores()
+	{
 		List<Speler> highscores = new ArrayList<>();
 		int teller = 1;
 
