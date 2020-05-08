@@ -207,7 +207,14 @@ public class Speler
 
 		return score;
 	}	
+	
+	
 
+
+	public void setScore(int score) 
+	{
+		this.score = score;
+	}
 
 	public List<Kaart> getHand() 
 	{
