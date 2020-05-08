@@ -540,9 +540,9 @@ public class Spel
         return spelerMapper.maakNieuweSpeler(speler);
     }
     
-    public Speler zoekSpeler(String gebruikersnaam)
+    public Speler zoekSpeler(String naam)
     {
-        return spelerMapper.zoekSpeler(gebruikersnaam);
+        return spelerMapper.zoekSpeler(naam);
     }
     
     public List<Speler> zoekAlleSpelers()
