@@ -35,17 +35,17 @@ public class WelkomScherm extends BorderPane
 
 	public WelkomScherm()
 	{
-		BuildGui();
+		buildGui();
 	}
 
 
 	public WelkomScherm(Spel spel)
 	{
 		this.spel = spel;
-		BuildGui();
+		buildGui();
 	}
 
-	private void BuildGui()
+	private void buildGui()
 	{
 		//Background opvullen
 		BackgroundImage bgImg = new BackgroundImage(new Image(getClass().getResourceAsStream("/images/background.jpg")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,

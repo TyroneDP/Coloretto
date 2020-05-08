@@ -6,9 +6,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import persistentie.SpelMapper;
-import persistentie.SpelerMapper;
-
 
 
 
@@ -44,12 +41,8 @@ public class Spel
 	private Kaart kaart;
 
 	private int spelID;
-	
-	private Calendar datum;
 
-	private SpelMapper spelMapper;
-	
-	private SpelerMapper spelerMapper;
+	private Calendar datum;
 
 	//methodes
 
@@ -58,51 +51,40 @@ public class Spel
 
 	public Spel()
 	{
-		spelMapper = new SpelMapper();
-		spelerMapper = new SpelerMapper();
+
 	}
 
-	public Spel(List<Speler> spelers) 
-	{
-        this(spelers, Calendar.getInstance());
-    }
-	
-	public Spel(List<Speler> spelers, Calendar datum)
-	{        
-        spelerMapper = new SpelerMapper();
-        spelMapper = new SpelMapper();
-        
-        this.datum = datum;
-    }
 	//getters & setters
-
+	
+	
+	@SuppressWarnings("exports")
 	public java.sql.Date geefDatum() 
-	{
+    {
         datum = Calendar.getInstance();
         java.sql.Date sqlDate = new java.sql.Date(datum.getTimeInMillis());
         return sqlDate;
     }
-	
-	public Calendar getDatum() 
-	{
-		return datum;
-	}
 
-	public void setDatum(Calendar datum) 
-	{
-		this.datum = datum;
-	}
+    public Calendar getDatum() 
+    {
+        return datum;
+    }
+
+    public void setDatum(Calendar datum) 
+    {
+        this.datum = datum;
+    }
 
 	public int getSpelID() 
     {
         return spelID;
     }
 
-	public void setSpelID(int spelID) 
+    public void setSpelID(int spelID) 
     {
         this.spelID = spelID;
     }
-	
+
 	public boolean isFouteKeuze() 
 	{
 		return fouteKeuze;
@@ -240,7 +222,8 @@ public class Spel
 				stapel.getKaarten().add(new Kaart("Paars"));	
 			}
 
-			for(int i = 0; i < 9 ;i++)							    			{
+			for(int i = 0; i < 9 ;i++)							    			
+			{
 				stapel.getKaarten().add(new Kaart("Groen"));
 				stapel.getKaarten().add(new Kaart("Rood"));
 
@@ -533,38 +516,4 @@ public class Spel
 		}
 
 	}
-	
-	
-    public boolean maakNieuweSpeler(Speler speler)
-    {
-        return spelerMapper.maakNieuweSpeler(speler);
-    }
-    
-    public Speler zoekSpeler(String naam)
-    {
-        return spelerMapper.zoekSpeler(naam);
-    }
-    
-    public List<Speler> zoekAlleSpelers()
-    {
-    	return spelerMapper.zoekAlleSpelers();
-    }
-    
-    public List<Speler> geefHighscores()
-    {
-    	return spelerMapper.geefHighscores();
-    }
-    
-    
-    public boolean maakNieuwSpel(Spel spel)
-    {
-    	return spelMapper.maakNieuwSpel(spel);
-    }
-    
-    public Spel geefBestaandSpel(int spelID)
-    {
-    	return spelMapper.geefBestaandSpel(spelID);
-    }
-    
-    
 }

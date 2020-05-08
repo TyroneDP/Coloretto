@@ -21,7 +21,6 @@ public class Rij
 	
 	private boolean leeg;
 	
-	private static final int MAX_SIZE = 3;
 
 	//methodes
 

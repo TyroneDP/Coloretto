@@ -1,8 +1,5 @@
 package gui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import domein.Spel;
 import domein.Speler;
 import javafx.event.ActionEvent;
@@ -33,11 +30,11 @@ public class AantalEnNamen extends BorderPane
 	private SpeelScherm speelscherm;
 
 	private Label titel = new Label("Kies het aantal spelers");
-	
+
 	private Label titelspelers;
 
 	private Button volgende = new Button("Volgende")
-			     , home = new Button("Home");
+			, home = new Button("Home");
 
 	private HBox volgendebox = new HBox(20);
 
@@ -56,12 +53,8 @@ public class AantalEnNamen extends BorderPane
 		buildAantalEnNamenGui();
 	}
 
-
-
-
 	private void buildAantalEnNamenGui()
 	{
-
 		//home button 
 		home = new Button("Home");
 		homebox.setAlignment(Pos.BASELINE_CENTER);
@@ -76,7 +69,7 @@ public class AantalEnNamen extends BorderPane
 		setTop(titel);
 
 		//volgende plaatsen
-		
+
 
 		//vierspelers button
 		vierspelers = new Button("4");
@@ -105,7 +98,7 @@ public class AantalEnNamen extends BorderPane
 		homebox.getChildren().addAll(home);
 		homebox.setAlignment(Pos.BASELINE_CENTER);
 		homebox.setPadding(new Insets(0, 0, 0, 0));
-	
+
 		setBottom(homebox);
 
 
@@ -119,29 +112,29 @@ public class AantalEnNamen extends BorderPane
 			public void handle(ActionEvent evt) 
 			{	
 				getChildren().removeAll(titel,vierenvijf); //eerst alles removen van scherm 
-				
+
 				naamSpeler1 = new TextField();
 				naamSpeler1.setPromptText("Naam speler 1");
-				
-				
+
+
 				naamSpeler2 = new TextField();
 				naamSpeler2.setPromptText("Naam speler 2");
-				
-				
+
+
 				naamSpeler3 = new TextField();
 				naamSpeler3.setPromptText("Naam speler 3");
-				
-				
+
+
 				naamSpeler4 = new TextField();
 				naamSpeler4.setPromptText("Naam speler 4");
-				
-				
+
+
 				//volgendebox plaatsen
 				volgendebox.getChildren().addAll(volgende);
 				volgendebox.setAlignment(Pos.CENTER_RIGHT);
 				volgendebox.setPadding(new Insets(-100, 20, 0, 0));
 				setRight(volgendebox);
-				
+
 				//titel plaatsen
 				titelspelers = new Label("Gelieve de namen van de spelers in te voeren");
 				titelspelers.getStyleClass().add("titel");
@@ -149,16 +142,16 @@ public class AantalEnNamen extends BorderPane
 				titelspelers.setAlignment(Pos.TOP_CENTER);
 				titelspelers.setPadding(new Insets(200, 0, 0, 0));
 				setTop(titelspelers);
-				
-				
+
+
 				textFieldsBox.getChildren().addAll(naamSpeler1, naamSpeler2, naamSpeler3, naamSpeler4);
 				textFieldsBox.setMaxWidth(500);
 				textFieldsBox.setAlignment(Pos.CENTER);
 				textFieldsBox.setPadding(new Insets(-100, 0, 0, 0));
 				setCenter(textFieldsBox);
-				
-				
-				
+
+
+
 
 			}
 		});
@@ -171,33 +164,33 @@ public class AantalEnNamen extends BorderPane
 			public void handle(ActionEvent evt) 
 			{	
 				getChildren().removeAll(titel,vierenvijf); //eerst alles removen van scherm 
-				
+
 				naamSpeler1 = new TextField();
 				naamSpeler1.setPromptText("Naam speler 1");
-				
-				
+
+
 				naamSpeler2 = new TextField();
 				naamSpeler2.setPromptText("Naam speler 2");
-				
-				
+
+
 				naamSpeler3 = new TextField();
 				naamSpeler3.setPromptText("Naam speler 3");
-		
-				
+
+
 				naamSpeler4 = new TextField();
 				naamSpeler4.setPromptText("Naam speler 4");
-				
-				
+
+
 				naamSpeler5 = new TextField();
 				naamSpeler5.setPromptText("Naam speler 5");
-				
-				
+
+
 				//volgendebox plaatsen
 				volgendebox.getChildren().addAll(volgende);
 				volgendebox.setAlignment(Pos.CENTER_RIGHT);
 				volgendebox.setPadding(new Insets(-100, 20, 0, 0));
 				setRight(volgendebox);
-				
+
 				//titel plaatsen
 				titelspelers = new Label("Gelieve de namen van de spelers in te voeren");
 				titelspelers.getStyleClass().add("titel");
@@ -205,18 +198,16 @@ public class AantalEnNamen extends BorderPane
 				titelspelers.setAlignment(Pos.TOP_CENTER);
 				titelspelers.setPadding(new Insets(200, 0, 0, 0));
 				setTop(titelspelers);
-				
+
 				//textfields plaatsen
 				textFieldsBox.getChildren().addAll(naamSpeler1, naamSpeler2, naamSpeler3, naamSpeler4, naamSpeler5);
 				textFieldsBox.setMaxWidth(500);
 				textFieldsBox.setAlignment(Pos.CENTER);
 				textFieldsBox.setPadding(new Insets(-100, 0, 0, 0));
 				setCenter(textFieldsBox);
-				
+
 			}
 		});
-
-
 
 		//als ik op home druk
 		home.setOnAction(this::toonWelkomScherm);
@@ -224,9 +215,6 @@ public class AantalEnNamen extends BorderPane
 		volgende.setOnAction(this::toonSpeelScherm);
 
 	}
-
-
-
 
 	private void toonWelkomScherm(ActionEvent event)
 	{
@@ -242,26 +230,21 @@ public class AantalEnNamen extends BorderPane
 		spel.getSpelers().add(new Speler(naamSpeler3.getText()));
 		spel.getSpelers().add(new Speler(naamSpeler4.getText()));
 		if(naamSpeler5 != null)
-		spel.getSpelers().add(new Speler(naamSpeler5.getText()));
+			spel.getSpelers().add(new Speler(naamSpeler5.getText()));
 
-		//this.speelscherm = new SpeelScherm(spel);
 		getChildren().remove(titel);
 		setCenter(speelscherm);
-		
-	
+
 		//als ik klik background changen
 		BackgroundImage bgImg = new BackgroundImage(new Image(getClass().getResourceAsStream("/images/board.png")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-		BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+				BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 		achtergrond = new Background(bgImg);
 		setBackground(achtergrond);
-		
+
 		getChildren().removeAll(volgendebox);
 		speelscherm = new SpeelScherm(spel);
 		this.getChildren().removeAll(homebox);
 		getChildren().removeAll(titel,titelspelers);
 		setCenter(speelscherm);
-		
-		
-
 	}
 }

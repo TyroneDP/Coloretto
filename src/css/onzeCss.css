@@ -1,18 +1,29 @@
 .button
 {
- 	-fx-font-size: 12px;
+     -fx-font-size: 12px;
     -fx-font-weight: bold;
     -fx-text-fill: #009900;
     -fx-border-style: solid;
     -fx-label-padding: 15px;
-    
+
 }
 
 .titel
 {
-	-fx-font-family: Garamond;
- 	-fx-font-size: 50px;
+    -fx-font-family: Garamond;
+     -fx-font-size: 50px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
 }
-
+.titelSpelers
+{
+    -fx-font-family: Garamond;
+     -fx-font-size: 90px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-underline: true ;
+}
+.vet
+{
+    -fx-font-weight: bold;
+}

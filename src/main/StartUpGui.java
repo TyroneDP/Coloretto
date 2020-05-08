@@ -5,8 +5,10 @@ import gui.WelkomScherm;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+
 
 public class StartUpGui extends Application
 {
@@ -29,6 +31,7 @@ public class StartUpGui extends Application
 		stage.setTitle("Coloretto");
 		stage.show();
 		stage.setMaximized(true);
+		stage.getIcons().add(new Image(this.getClass().getResourceAsStream("/images/exe.png")));
 		//stage.setFullScreen(true);
 			
 	}
