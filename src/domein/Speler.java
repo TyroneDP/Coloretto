@@ -14,11 +14,11 @@ public class Speler
 
 	private List<Kaart> hand = new ArrayList<Kaart>();
 
-	int score = 0;
+	private List<Integer> aantal;
+
+	private int score;
 
 	//methodes
-
-
 
 
 	//constructor
@@ -33,42 +33,24 @@ public class Speler
 	}
 
 	//getters & setters
-	public void setScore(int score) 
-	{
-		this.score = score;
-	}
+
 	public int berekenScore() 
 	{
-		//om aantal van elke kaart bij te houden
-		List<Integer> aantal = new ArrayList<Integer>();
+		score = 0;
 
-		int 	//kleurkaarten			//elke kaart gelijk stellen aan int dat we score kunnen berekenen
-		Oranje = 0,  
-		Blauw = 0, 
-		Bruin = 0, 
-		Geel  = 0, 
-		Paars = 0,
-		Groen = 0, 
-		Rood = 0, 
+		aantal = new ArrayList<Integer>();
 
-		//speciale kaarten
-		Plus2 = 0, 
-		Joker = 0;
+		int 	Oranje = 0,  
+				Blauw = 0, 
+				Bruin = 0, 
+				Geel  = 0, 
+				Paars = 0,
+				Groen = 0, 
+				Rood = 0, 
+				Plus2 = 0, 
+				Joker = 0;
 
-		//alles in onze lijst van aantallen steken
-		aantal.add(Oranje);
-		aantal.add(Blauw);
-		aantal.add(Bruin);
-		aantal.add(Geel);
-		aantal.add(Paars);
-		aantal.add(Groen);
-		aantal.add(Rood);
-		aantal.add(Plus2);
-		aantal.add(Joker);
-
-
-
-		for (Kaart kaarten: hand) //voor elke kaart dat we toevoegen naar ons hand te checken en "toe te voegen"
+		for (Kaart kaarten: hand) 						//voor elke kaart dat we toevoegen naar ons hand te checken en "toe te voegen"
 		{
 
 			if ("Oranje".equals(kaarten.getKleur()) )
@@ -117,64 +99,111 @@ public class Speler
 			}
 		}
 
-		for (int i=0 ; i<3 ; i++)                                                    //voor de 3 rijen in hand score toevoegen
+
+		//alles in onze lijst van aantallen steken
+		aantal.add(Oranje);
+		aantal.add(Blauw);
+		aantal.add(Bruin);
+		aantal.add(Geel);
+		aantal.add(Paars);
+		aantal.add(Groen);
+		aantal.add(Rood);
+		aantal.add(Plus2);
+		aantal.add(Joker);
+
+		//anders foute score
+		Collections.sort(aantal, Collections.reverseOrder());	//elke waarde sorteren, maar is van klein naar groot, hierna reverseorder op doen anders foute score
+
+
+
+
+		for (int x=0 ; x < Joker; x++)								//voor Joker automatisch te leggen op de beste plek
 		{
-			if     ((aantal.get(i)) == 1)
-				score += 1;
-			else 
-				if ( (aantal.get(i))== 2 )
-					score += 3;
-				else 
-					if ((aantal.get(i)) == 3 )
-						score += 6;
-					else 
-						if ( (aantal.get(i)) == 4)
-							score += 10;
-						else 
-							if ((aantal.get(i)) == 5)
-								score += 15;
-							else 
-								if (aantal.get(i) >= 6)
-									score += 21;
+			for(int y=0; y<3; y++)
+			{
+				if(aantal.get(y) < 6)
+					aantal.set(y, (aantal.get(y) + 1));
+
+			}
+
 		}
 
 
-		for (int i=3; i<7 ; i++)                                                    //vanaf 3 rijen neemt de score af per extra rij (tot 7, want er bestaan 7 kleuren)
+
+
+		//+ het berekenen van de score voor 3 rijen
+		for(int i=0 ; i<3 ; i++)	              //voor de 3 rijen in hand score toevoegen
 		{
-			if (1 == (aantal.get(i)))
-				score -= 1;
-			else 
-				if (2 == (aantal.get(i)))
-					score -= 3;
-				else 
-					if (3 == (aantal.get(i)))
-						score -= 6;
-					else 
-						if (4 == (aantal.get(i)))
-							score -= 10;
-						else 
-							if (5 == (aantal.get(i)))
-								score -= 15;
-							else 
-								if (aantal.get(i) >= 6)
-									score -= 21;
+			if     (aantal.get(i) == 1)
+			{
+				score = score + 1;
+			}
+
+			else if(aantal.get(i) == 2)
+			{
+				score = score + 3;
+			}
+
+			else if(aantal.get(i) == 3)
+			{
+				score = score + 6;
+			}
+
+			else if(aantal.get(i) == 4)
+			{
+				score = score + 10;
+			}
+
+			else if(aantal.get(i) == 5)
+			{
+				score = score + 15;
+			}
+
+			else if(aantal.get(i) >= 6)
+			{
+				score = score + 21;
+			}
+		}
+
+		//- het berekenen van de minscore vanaf 3 rijen
+		for (int i=3; i<7 ; i++)	          //voor de 3 rijen in hand score toevoegen
+		{
+			if     (aantal.get(i) == 1)
+			{
+				score = score - 1;
+			}
+
+			else if(aantal.get(i) == 2)
+			{
+				score = score - 3;
+			}
+
+			else if(aantal.get(i) == 3)
+			{
+				score = score - 6;
+			}
+
+			else if(aantal.get(i) == 4)
+			{
+				score = score - 10;
+			}
+
+			else if(aantal.get(i) == 5)
+			{
+				score = score - 15;
+			}
+
+			else if(aantal.get(i) >= 6)
+			{
+				score = score - 21;
+			}
 		}
 
 
-		//de jokers
-		for (int i=0; i<Joker; i++)													//voor Joker automatisch te leggen op de beste plek
-		{
-			if (aantal.get(0) <= 5)
-				aantal.set(0, (aantal.get(0) + 1));
-			
-			else if (aantal.get(1) <= 5)
-				aantal.set(1, (aantal.get(1) + 1));
-			
-			else aantal.set(2, (aantal.get(2) + 1));
-		}
 
-		//de plus 2'en bijvoegen
-		score = score + 2 * Plus2;
+
+
+		score = 2 * Plus2 + score;
 
 		return score;
 	}	
